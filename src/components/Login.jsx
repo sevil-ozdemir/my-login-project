@@ -44,7 +44,7 @@ export default function Login() {
   return (
     <div style={{ maxWidth: 420, margin: '64px auto', padding: 24 }}>
       <h1>Login</h1>
-      <form onSubmit={handleSubmit} noValidate>
+      <form onSubmit={handleSubmit} noValidate data-cy="login-form">
         <div style={{ marginBottom: 12 }}>
           <label htmlFor="email">E-posta</label>
           <input
@@ -54,9 +54,12 @@ export default function Login() {
             onChange={(e) => setEmail(e.target.value)}
             onBlur={() => setTouched((t) => ({ ...t, email: true }))}
             style={{ width: '100%', padding: '8px 10px', marginTop: 6 }}
+            data-cy="email-input"
           />
           {touched.email && errors.email && (
-            <small style={{ color: '#b00020' }}>{errors.email}</small>
+            <small style={{ color: '#b00020' }} data-cy="email-error">
+              {errors.email}
+            </small>
           )}
         </div>
 
@@ -69,9 +72,12 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
             onBlur={() => setTouched((t) => ({ ...t, password: true }))}
             style={{ width: '100%', padding: '8px 10px', marginTop: 6 }}
+            data-cy="password-input"
           />
           {touched.password && errors.password && (
-            <small style={{ color: '#b00020' }}>{errors.password}</small>
+            <small style={{ color: '#b00020' }} data-cy="password-error">
+              {errors.password}
+            </small>
           )}
         </div>
 
@@ -81,17 +87,21 @@ export default function Login() {
               type="checkbox"
               checked={accepted}
               onChange={(e) => setAccepted(e.target.checked)}
+              data-cy="terms-checkbox"
             />
             Şartları kabul ediyorum
           </label>
           {!accepted && (
-            <small style={{ color: '#b00020' }}>{errors.accepted}</small>
+            <small style={{ color: '#b00020' }} data-cy="terms-error">
+              {errors.accepted}
+            </small>
           )}
         </div>
 
         <button
           type="submit"
           disabled={!isValid}
+          data-cy="submit-button"
           style={{
             width: '100%',
             padding: '10px 12px',
