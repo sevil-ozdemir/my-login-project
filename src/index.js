@@ -1,3 +1,9 @@
+
+
+
+export const REPO_URL = "https://github.com/sevil-ozdemir/my-login-project"
+
+
 function cypressTestProjesi() {
   const checklist = {
     //github repo adresini gir: Örn: https://github.com/Workintech/hello-world
